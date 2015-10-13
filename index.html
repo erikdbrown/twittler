@@ -15,7 +15,7 @@
       <a href='#' id='post'>Twittle</a>
       </div>
       <div id="content">
-        <button type="button" id='refresh'>Refresh All Tweets</button>
+        <a href="#" id='refresh'>Refresh Feed</a>
         <div id="tweets"></div>
       </div>
     </div>
@@ -60,7 +60,7 @@
         $('#tweets a').on('click', function() {
           var whatClass = $(this).attr('class');
           showTweets(streams.users[whatClass]);
-          $('#refresh').text('Show All Tweets');
+          $('#refresh').text('< Back to All Twittles');
         })
       };
 
@@ -68,7 +68,7 @@
 
       $('#refresh').on('click', function() {
         showTweets(streams.home);
-        $('#refresh').text('Refresh Tweets');
+        $('#refresh').text('Refresh Feed');
       });
       
       $('#post').on('click', function() {

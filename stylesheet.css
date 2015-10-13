@@ -4,7 +4,7 @@
 }
 
 body {
-	background-color: #47D1FF;
+	background-color: #70DBFF;
 }
 
 #header {
@@ -65,7 +65,8 @@ textarea {
 	min-width: 300px;
 }
 
-#post {
+#post,
+#refresh {
 	padding-top: 2px;
     padding-left: 5px;
     padding-right: 5px;
