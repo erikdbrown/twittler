@@ -10,8 +10,10 @@
       <img height='70px' src="assets/birdlogo.png" />
     </div>
     <div id='container'>
+      <div id='tweeting'>
       <textarea id="tweet_box" cols='58' rows='1' placeholder="What's happening?"></textarea>
-      <button type='button' id='post'>Twittle</button>
+      <a href='#' id='post'>Twittle</a>
+      </div>
       <div id="content">
         <button type="button" id='refresh'>Refresh All Tweets</button>
         <div id="tweets"></div>
@@ -53,7 +55,7 @@
         }
 
         // when clickingo on a username only show that user's tweets
-        $('a').on('click', function() {
+        $('#tweets a').on('click', function() {
           var whatClass = $(this).attr('class');
           showTweets(streams.users[whatClass]);
           $('#refresh').text('Show All Tweets');
@@ -68,8 +70,12 @@
       });
       
       $('#post').on('click', function() {
-        writeTweet($('#tweet_box').val());
-        showTweets(streams.home);
+        var tweet = $('#tweet_box').val();
+        if (tweet) {
+          writeTweet(tweet);
+          showTweets(streams.home);
+          $('#tweet_box').val('');
+        }
       });
 
       $('#tweet_box').on('click', function() {

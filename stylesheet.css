@@ -10,6 +10,7 @@ body {
 #header {
 	height: 30px;
 	background-color: #1F7A99;
+	box-shadow: 0 2px 2px #404040;
 	width: 100%;
 	margin-bottom: 15px;
 	padding-bottom: 8.5px;
@@ -28,10 +29,16 @@ a {
 	color: #248FB2;
 }
 
+#tweeting {
+	margin-right: auto;
+	margin-left: auto;
+}
+
 textarea {
 	border-radius: 5px;
 	padding: 2px;
 	border: 1px solid;
+	vertical-align: top;
 	border-color: #1F7A99;
 	background-color: #EBFAFF;
 }
@@ -45,8 +52,9 @@ textarea {
 #content {
 	background-color: #D6F5FF;
 	border: 1px solid;
+	box-shadow: 0 2px 2px #1F7A99;
 	border-color: #1F7A99;
-	margin-top: 10px;
+	margin-top: 13px;
 	border-radius: 10px;
 	padding: 15px;
 }
@@ -55,4 +63,18 @@ textarea {
 	margin: 7.5px;
 	color: #0A2933;
 	min-width: 300px;
+}
+
+#post {
+	padding-top: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 2px;
+	border-radius: 11px;
+	text-align: center;
+	box-shadow: 0 2px 2px #1F7A99;
+	background-color: #D6F5FF;
+	vertical-align: top;
+	color: #1F7A99;
+	border: 1px solid #1F7A99;
 }
