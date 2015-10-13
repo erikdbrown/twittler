@@ -27,16 +27,18 @@
 
       var howLongAgo = function(tweetTime) {
             var timeNow = new Date();
-            var timeDifference = Math.floor(((timeNow - tweetTime)/60000));
-            if (timeDifference > 60) {
-              var diffInHours = timeDifference/60;
+            var timeDifferenceInSec = Math.floor(((timeNow - tweetTime)/1000));
+
+            if (timeDifferenceInSec > 3600) {
+              var diffInHours = timeDifferenceInSec/3600;
               var numOfHours = Math.floor(diffInHours);
               var numOfMin = Math.floor((diffInHours - numOfHours) * 60);
               var minOrHoursAgo = '- ' + numOfHours + ' hr' + (numOfHours > 1 ? 's ' : ' ') + numOfMin + ' min' + (numOfMin > 1 ? 's ' : ' ') + 'ago';
-            } else if (timeDifference >= 1){
-              minOrHoursAgo = '- ' + timeDifference + ' min' + (timeDifference > 1 ? 's ' : ' ') + 'ago';
+            } else if (timeDifferenceInSec >= 60){
+              var numOfMin =  Math.floor(timeDifferenceInSec/60)
+              minOrHoursAgo = '- ' + numOfMin + ' min' + (numOfMin > 1 ? 's ' : ' ') + 'ago';
             } else {
-              minOrHoursAgo = '- just now';
+              minOrHoursAgo = '- ' + Math.floor(timeDifferenceInSec) + ' sec ago';
             }
             return ' ' +  minOrHoursAgo;
           };
@@ -49,7 +51,7 @@
           var tweet = tweetArray[index];
           var $tweet = $('<div></div>');
 
-          $tweet.html('@<a href="#" class="' + tweet.user +'">' + tweet.user + '</a>: ' + tweet.message + howLongAgo(tweet.created_at));
+          $tweet.html('@<a href="#" class="' + tweet.user +'">' + tweet.user + '</a>: ' + tweet.message + '<span class="postTime">' + howLongAgo(tweet.created_at) + '</span>');
           $tweet.appendTo($('#tweets'));
           index -= 1;
         }
