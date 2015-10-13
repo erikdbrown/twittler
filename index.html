@@ -6,10 +6,17 @@
     <link rel="stylesheet" type="text/css" href="stylesheet.css">
   </head>
   <body>
-    <button type="button" id='refresh'>Refresh All Tweets</button>
-    <textarea id="tweet_box" cols='58' rows='4' placeholder="What's happening?"></textarea>
-    <button type='button' id='post'>Post Tweet</button>
-    <div id="tweets"></div>
+    <div id='header'>
+      <img height='70px' src="assets/birdlogo.png" />
+    </div>
+    <div id='container'>
+      <textarea id="tweet_box" cols='58' rows='1' placeholder="What's happening?"></textarea>
+      <button type='button' id='post'>Twittle</button>
+      <div id="content">
+        <button type="button" id='refresh'>Refresh All Tweets</button>
+        <div id="tweets"></div>
+      </div>
+    </div>
     <script>
 
     $(document).ready(function(){
@@ -64,6 +71,14 @@
         writeTweet($('#tweet_box').val());
         showTweets(streams.home);
       });
+
+      $('#tweet_box').on('click', function() {
+        $(this).attr('rows', 4);
+      });
+
+      $('#tweet_box').focusout(function() {
+        $(this).attr('rows', 1);
+      })
 });
 
     </script>
