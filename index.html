@@ -3,6 +3,7 @@
   <head>
     <script src="jquery.js"></script>
     <script src="data_generator.js"></script>
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
   </head>
   <body>
     <button type="button" id='refresh'>Refresh All Tweets</button>
@@ -48,6 +49,7 @@
         $('a').on('click', function() {
           var whatClass = $(this).attr('class');
           showTweets(streams.users[whatClass]);
+          $('#refresh').text('Show All Tweets');
         })
       };
 
@@ -55,6 +57,7 @@
 
       $('#refresh').on('click', function() {
         showTweets(streams.home);
+        $('#refresh').text('Refresh Tweets');
       });
       
       $('#post').on('click', function() {
