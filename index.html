@@ -15,6 +15,7 @@
       <a href='#' id='post'>Twittle</a>
       </div>
       <div id="content">
+        <a href="#" id='return' class='hidden'><< Back to All Twittles</a>
         <a href="#" id='refresh'>Refresh Feed</a>
         <div id="tweets"></div>
       </div>
@@ -63,19 +64,29 @@
         $('#tweets a').on('click', function() {
           var whatClass = $(this).attr('class');
           showTweets(streams.users[whatClass]);
-          $('#refresh').text('< Back to All Twittles');
+          $('#return').toggle();
         })
       };
 
       // show tweets when the page is first loaded
       showTweets(streams.home);
 
-      // show all tweets in stream.home when Refresh Feed button is 
-      // clicked.
+      // show all tweets in stream.home when Refresh Feed button is clicked.
+      // if a specific user's tweets are displayed, refreah the user's tweets
       $('#refresh').on('click', function() {
-        showTweets(streams.home);
-        $('#refresh').text('Refresh Feed');
+        if ($('#return').css('display') === 'none') {
+          showTweets(streams.home);
+        } else {
+          var username = $('#tweets').find('a').attr('class');
+          showTweets(streams.users[username]);
+        }
       });
+
+      // Show all tweets when "back to all twittles" is clicked. Remove button.
+      $('#return').on('click', function() {
+        showTweets(streams.home);
+        $('#return').toggle();
+      })
       
       // when the "Twittle" button is pushed, set tweet as the value of "tweet_box"
       // use tweet as the arguments for writeTweet
