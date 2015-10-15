@@ -64,7 +64,10 @@
         $('#tweets a').on('click', function() {
           var whatClass = $(this).attr('class');
           showTweets(streams.users[whatClass]);
-          $('#return').toggle();
+          // only toggle the "Back to all twittles" if display is none 
+          if ($('#return').css('display') === 'none') {
+            $('#return').toggle();
+          }
         })
       };
 
