@@ -26,7 +26,7 @@
       var $body = $('body');
       //$body.html('');
 
-      // set the "- xxs/xxm ago" for each tweet
+      // sets the "- xxs/xxm ago" for each tweet
       var howLongAgo = function(tweetTime) {
             var timeNow = new Date();
             var timeDifferenceInSec = Math.floor(((timeNow - tweetTime)/1000));
@@ -45,8 +45,7 @@
             return ' ' +  minOrHoursAgo;
           };
 
-          // modified this so that it takes an array of tweets, tweetArray. They way it 
-          // can be used for only showing a specific user's tweets.
+          // modified this so that it takes an array of tweets, tweetArray. That way it can be used for only showing a specific user's tweets.
       var showTweets = function(tweetArray) {
         $('#tweets').empty();
         var index = tweetArray.length - 1;
@@ -75,7 +74,7 @@
       showTweets(streams.home);
 
       // show all tweets in stream.home when Refresh Feed button is clicked.
-      // if a specific user's tweets are displayed, refreah the user's tweets
+      // if a specific user's tweets are displayed, refreah only the user's tweets
       $('#refresh').on('click', function() {
         if ($('#return').css('display') === 'none') {
           showTweets(streams.home);
@@ -108,7 +107,7 @@
         $(this).attr('rows', 4);
       });
 
-      // Return "tweet_box" to initial size when clicked out
+      // Return "tweet_box" to initial size when unfocused.
       $('#tweet_box').focusout(function() {
         $(this).attr('rows', 1);
       })
